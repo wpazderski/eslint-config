@@ -144,3 +144,9 @@ The two most common ways of enabling watch mode are:
 
 - creating a separate config file (e.g. `eslint-watch.config.ts`) with `watch: true`,
 - using the same `eslint.config.ts` with `watch` option value based on an env var.
+
+## Related projects
+
+- [@wpazderski/prettier-config](https://github.com/wpazderski/prettier-config),
+- [@wpazderski/typescript-config](https://github.com/wpazderski/typescript-config)
+- [@wpazderski/configs-example-project](https://github.com/wpazderski/configs-example-project) - an example project that shows how to use all configs.
