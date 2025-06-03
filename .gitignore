@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist
+*.tsbuildinfo
+
+# Private notes
+notes.todo
+
+# Misc
+.DS_Store
+*.pem
+npm-debug.log*
