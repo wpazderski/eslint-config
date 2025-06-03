@@ -1,6 +1,6 @@
 {
     "name": "@wpazderski/eslint-config",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Common Eslint flat configs with strict options enabled",
     "keywords": [
         "eslint",
