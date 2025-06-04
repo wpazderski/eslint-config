@@ -60,11 +60,11 @@ importers:
                 version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
         devDependencies:
             "@wpazderski/prettier-config":
-                specifier: ^1.0.1
-                version: 1.0.1(prettier@3.5.3)
+                specifier: ^1.0.2
+                version: 1.0.2(prettier@3.5.3)
             "@wpazderski/typescript-config":
-                specifier: ^1.0.0
-                version: 1.0.0
+                specifier: ^1.0.3
+                version: 1.0.3
             eslint:
                 specifier: ^9.28.0
                 version: 9.28.0
@@ -402,14 +402,14 @@ packages:
             typescript:
                 optional: true
 
-    "@wpazderski/prettier-config@1.0.1":
-        resolution: { integrity: sha512-oKJLZPrFt2LgRtRE5rhOTOMgpBzQ97ss1EOycr/g51eBo4sp+w/DAABRfV/ek4ZBdGYWEd2zf/IlN2Gwk5YPxg== }
+    "@wpazderski/prettier-config@1.0.2":
+        resolution: { integrity: sha512-noDIap5L6i6D1oFAlCuuL5+PzXdfPzry24cqFrZr+ngIN7JMpj/mu+LrZc/U0SodFJgMShxkSoHyT5hSb4p9pA== }
         engines: { node: ">=24.0.0", npm: please-use-pnpm, pnpm: ">=10.0.0", yarn: please-use-pnpm }
         peerDependencies:
             prettier: ^3.5.3
 
-    "@wpazderski/typescript-config@1.0.0":
-        resolution: { integrity: sha512-iiJbCt+tqaSRfO8bAt7QbysS01ZoSrxrM1iCDiBPFMtFJ2EuazS0+n8VXP2hM7r3UIDboNmHFhirWJD4z6mc1A== }
+    "@wpazderski/typescript-config@1.0.3":
+        resolution: { integrity: sha512-QQwlj+TNqEOkiiIVeJDtvaGpPwpCAgOjwOXA/m3QBvtW8d8RYPCy308g6mOfm8dNaSjrrhPIT8Q/6XPBTv50ww== }
         engines: { node: ">=24.0.0", npm: please-use-pnpm, pnpm: ">=10.0.0", yarn: please-use-pnpm }
 
     acorn-jsx@5.3.2:
@@ -727,8 +727,8 @@ packages:
         peerDependencies:
             eslint: ">=7.0.0"
 
-    eslint-import-context@0.1.6:
-        resolution: { integrity: sha512-/e2ZNPDLCrU8niIy0pddcvXuoO2YrKjf3NAIX+60mHJBT4yv7mqCqvVdyCW2E720e25e4S/1OSVef4U6efGLFg== }
+    eslint-import-context@0.1.7:
+        resolution: { integrity: sha512-gRkcGvLn+lYEBmv8OSzHciuS0Py6MPd0EEb112C1iHOgvrbnaveqL/f3nEccqHuN8+jGDVOADu0JCMrikCgm3w== }
         engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
         peerDependencies:
             unrs-resolver: ^1.0.0
@@ -1614,6 +1614,9 @@ packages:
     stable-hash@0.0.5:
         resolution: { integrity: sha512-+L3ccpzibovGXFK+Ap/f8LOS0ahMrHTf3xu7mMLSpEGU0EO9ucaysSylKo9eRDFNhWve/y275iPmIZ4z39a9iA== }
 
+    stable-hash@0.0.6:
+        resolution: { integrity: sha512-0afH4mobqTybYZsXImQRLOjHV4gvOW+92HdUIax9t7a8d9v54KWykEuMVIcXhD9BCi+w3kS4x7O6fmZQ3JlG/g== }
+
     stop-iteration-iterator@1.1.0:
         resolution: { integrity: sha512-eLoXW/DHyl62zxY4SCaIgnRhuMr6ri4juEYARS8E6sCEqzKpOiE521Ucofdx+KnDZl5xmvGYaaKCk5FEOxJCoQ== }
         engines: { node: ">= 0.4" }
@@ -2211,11 +2214,11 @@ snapshots:
         transitivePeerDependencies:
             - supports-color
 
-    "@wpazderski/prettier-config@1.0.1(prettier@3.5.3)":
+    "@wpazderski/prettier-config@1.0.2(prettier@3.5.3)":
         dependencies:
             prettier: 3.5.3
 
-    "@wpazderski/typescript-config@1.0.0": {}
+    "@wpazderski/typescript-config@1.0.3": {}
 
     acorn-jsx@5.3.2(acorn@8.14.1):
         dependencies:
@@ -2631,10 +2634,10 @@ snapshots:
         dependencies:
             eslint: 9.28.0
 
-    eslint-import-context@0.1.6(unrs-resolver@1.7.9):
+    eslint-import-context@0.1.7(unrs-resolver@1.7.9):
         dependencies:
             get-tsconfig: 4.10.1
-            stable-hash: 0.0.5
+            stable-hash: 0.0.6
         optionalDependencies:
             unrs-resolver: 1.7.9
 
@@ -2650,7 +2653,7 @@ snapshots:
         dependencies:
             debug: 4.4.1
             eslint: 9.28.0
-            eslint-import-context: 0.1.6(unrs-resolver@1.7.9)
+            eslint-import-context: 0.1.7(unrs-resolver@1.7.9)
             get-tsconfig: 4.10.1
             is-bun-module: 2.0.0
             stable-hash: 0.0.5
@@ -3616,6 +3619,8 @@ snapshots:
     spdx-license-ids@3.0.21: {}
 
     stable-hash@0.0.5: {}
+
+    stable-hash@0.0.6: {}
 
     stop-iteration-iterator@1.1.0:
         dependencies:

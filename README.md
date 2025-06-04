@@ -148,5 +148,7 @@ The two most common ways of enabling watch mode are:
 ## Related projects
 
 - [@wpazderski/prettier-config](https://github.com/wpazderski/prettier-config),
-- [@wpazderski/typescript-config](https://github.com/wpazderski/typescript-config)
-- [@wpazderski/configs-example-project](https://github.com/wpazderski/configs-example-project) - an example project that shows how to use all configs.
+- [@wpazderski/typescript-config](https://github.com/wpazderski/typescript-config),
+- [@wpazderski/playwright-config](https://github.com/wpazderski/playwright-config),
+- [@wpazderski/playwright-utils](https://github.com/wpazderski/playwright-utils),
+- [@wpazderski/configs-utils-example](https://github.com/wpazderski/configs-utils-example) - an example project that shows how to use all configs and utils.
