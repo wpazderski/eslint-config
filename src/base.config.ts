@@ -9,7 +9,7 @@ import turbo from "eslint-plugin-turbo";
 import globals from "globals";
 import tseslint, { type ConfigArray, type InfiniteDepthConfigWithExtends, configs as tsEslintConfigs } from "typescript-eslint";
 import { commonNamingConventionRules } from "./internal/commonNamingConventionRules.ts";
-import { jsAndTsLikeFiles, makeOnlyForJsAndTsLikeFiles } from "./internal/utils.ts";
+import { jsAndTsLikeFiles, makeOnlyForJsAndTsLikeFiles, testAndTestUtilsFiles } from "./internal/utils.ts";
 import type { RequiredNonNullable } from "./types.ts";
 
 export interface CreateBaseConfigOptions {
@@ -531,7 +531,7 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
                 "import/no-extraneous-dependencies": [
                     "error",
                     {
-                        devDependencies: ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
+                        devDependencies: testAndTestUtilsFiles,
                         optionalDependencies: false,
                         peerDependencies: false,
                     },
@@ -591,27 +591,33 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
         options.withPlaywright
             ? {
                   ...playwright.configs["flat/recommended"],
-                  files: ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
+                  files: testAndTestUtilsFiles,
                   rules: {
                       ...playwright.configs["flat/recommended"].rules,
 
                       // eslint core / "Suggestions"
+                      "max-classes-per-file": "off",
+                      "max-depth": "off",
+                      "max-lines": "off",
                       "max-lines-per-function": "off",
                       "max-nested-callbacks": "off",
+
+                      // plugin: @typescript-eslint
+                      "@typescript-eslint/naming-convention": "off",
+                      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
 
                       // plugin: playwright
                       "playwright/expect-expect": "error",
                       "playwright/max-expects": [
                           "error",
                           {
-                              max: 8,
+                              max: 20,
                           },
                       ],
-
                       "playwright/max-nested-describe": [
                           "error",
                           {
-                              max: 4,
+                              max: 5,
                           },
                       ],
                       "playwright/missing-playwright-await": "error",
@@ -684,7 +690,17 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
         },
 
         {
-            files: [".prettierrc.js", ".prettierrc.cjs", ".prettierrc.ts", ".prettierrc.mjs", "prettier.config.js", "prettier.config.ts"],
+            files: [
+                ".prettierrc.js",
+                ".prettierrc.cjs",
+                ".prettierrc.ts",
+                ".prettierrc.mjs",
+                "prettier.config.js",
+                "prettier.config.ts",
+                "typedoc.config.js",
+                "typedoc.config.cjs",
+                "typedoc.config.mjs",
+            ],
 
             rules: {
                 // plugin: import
