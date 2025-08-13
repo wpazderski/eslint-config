@@ -1,4 +1,4 @@
-# eslint-config
+# @wpazderski/eslint-config
 
 Common [Eslint](https://eslint.org/) flat configs with strict options enabled
 
@@ -147,8 +147,4 @@ The two most common ways of enabling watch mode are:
 
 ## Related projects
 
-- [@wpazderski/prettier-config](https://github.com/wpazderski/prettier-config),
-- [@wpazderski/typescript-config](https://github.com/wpazderski/typescript-config),
-- [@wpazderski/playwright-config](https://github.com/wpazderski/playwright-config),
-- [@wpazderski/playwright-utils](https://github.com/wpazderski/playwright-utils),
-- [@wpazderski/configs-utils-example](https://github.com/wpazderski/configs-utils-example) - an example project that shows how to use all configs and utils.
+See [https://pazderski.dev/projects/](https://pazderski.dev/projects/) for other projects that provide various configs, utils, tools and examples.
