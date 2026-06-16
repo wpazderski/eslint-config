@@ -64,14 +64,14 @@ importers:
         specifier: ^25.9.3
         version: 25.9.3
       '@wpazderski/node-package-tools':
-        specifier: ^1.0.0
-        version: 1.0.0
-      '@wpazderski/prettier-config':
-        specifier: ^2.0.0
-        version: 2.0.0(prettier@3.8.4)
-      '@wpazderski/typescript-config':
         specifier: ^2.0.0
         version: 2.0.0
+      '@wpazderski/prettier-config':
+        specifier: ^2.0.1
+        version: 2.0.1(prettier@3.8.4)
+      '@wpazderski/typescript-config':
+        specifier: ^2.0.1
+        version: 2.0.1
       eslint:
         specifier: ^10.5.0
         version: 10.5.0
@@ -834,19 +834,19 @@ packages:
       typescript:
         optional: true
 
-  '@wpazderski/node-package-tools@1.0.0':
-    resolution: {integrity: sha512-/VnRvuTdtdPjNgE6KS7L22N/8i8U8LFEgiX5ussCtTWFpRDzvmn56tmPeUMeqGPSfT131pwFJjFzNi74+Fb/wQ==}
+  '@wpazderski/node-package-tools@2.0.0':
+    resolution: {integrity: sha512-+Zum25HPGdd4YocS7hrnZBWKKlLGwR0COphjzvjbqdJORCDxZkpEF/HfmraNQKNGrfr7PSuyU7QYPJGjyFjo9w==}
     engines: {node: '>=24.0.0', npm: please-use-pnpm, pnpm: '>=10.0.0', yarn: please-use-pnpm}
     hasBin: true
 
-  '@wpazderski/prettier-config@2.0.0':
-    resolution: {integrity: sha512-BJHa5ESqFUOY9r1Nt0DjFwXFMZZJHpC7zEDRnYOjlfMC4nrjWzss0ELNbHUwPApmTHYGWCX9fCgYVGdVgaw7+A==}
+  '@wpazderski/prettier-config@2.0.1':
+    resolution: {integrity: sha512-YslaeMDsPfAf4UdN8K0uVP6e1c+YzTd1KAwL4qH3WkDkB0Cq1qnfsWTL7B1tkPFOLcOMcihbt7vUL4rNAhHhAQ==}
     engines: {node: '>=24.0.0', npm: please-use-pnpm, pnpm: '>=10.0.0', yarn: please-use-pnpm}
     peerDependencies:
       prettier: ^3.5.3
 
-  '@wpazderski/typescript-config@2.0.0':
-    resolution: {integrity: sha512-T9/jLVKBNDNwbUm2Xj81i/4AFuQBOr0/l/ToFGqs8WAxl0T4OcApaJ4gviYY7G3R5P5dxfGC3oB4WHGkUppqHg==}
+  '@wpazderski/typescript-config@2.0.1':
+    resolution: {integrity: sha512-KDd1R/EkVRmt2DB5t0OofO2k6UvueglqTH+ft2ANsfBY8iiqFjrzKsju4DjOuMj2f4+Ctziid8Ldz9LVFkNABA==}
     engines: {node: '>=24.0.0', npm: please-use-pnpm, pnpm: '>=10.0.0', yarn: please-use-pnpm}
 
   '@yarnpkg/lockfile@1.1.0':
@@ -3735,15 +3735,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@wpazderski/node-package-tools@1.0.0':
+  '@wpazderski/node-package-tools@2.0.0':
     dependencies:
       semver: 7.8.4
 
-  '@wpazderski/prettier-config@2.0.0(prettier@3.8.4)':
+  '@wpazderski/prettier-config@2.0.1(prettier@3.8.4)':
     dependencies:
       prettier: 3.8.4
 
-  '@wpazderski/typescript-config@2.0.0': {}
+  '@wpazderski/typescript-config@2.0.1': {}
 
   '@yarnpkg/lockfile@1.1.0': {}
 
