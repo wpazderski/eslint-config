@@ -1,32 +1,56 @@
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
+import reactRefreshPlugin from "eslint-plugin-react-refresh";
 import tseslint, { type ConfigArray } from "typescript-eslint";
 import { type CreateBaseConfigOptions, createBaseConfig } from "./base.config.ts";
 import { commonNamingConventionRules } from "./internal/commonNamingConventionRules.ts";
 import { assertDefinedAndGet } from "./internal/utils.ts";
 
-export interface CreateReactConfigOptions extends CreateBaseConfigOptions {}
+export interface CreateReactConfigOptions extends CreateBaseConfigOptions {
+    /**
+     * Whether to enable the React Compiler lint rules contributed by `eslint-plugin-react-hooks` v7 (the rules its recommended config adds beyond the two classic ones - e.g. `react-hooks/refs`, `react-hooks/immutability`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/static-components`).
+     * When disabled, only the classic Hooks rules (`react-hooks/rules-of-hooks` and `react-hooks/exhaustive-deps`) stay enabled; every other rule from the recommended config is turned off.
+     * Enable this only for codebases that adopt the React Compiler, since these rules assume the compiler's model and otherwise flag many legitimate patterns.
+     *
+     * @default false
+     */
+    withReactCompiler?: boolean | undefined;
+}
 
 export const createReactConfig = (options?: CreateReactConfigOptions): ConfigArray => {
-    const { configs: userConfigs, ...baseConfigOptions } = options ?? {};
+    const { configs: userConfigs, withReactCompiler, ...baseConfigOptions } = options ?? {};
+
+    const reactHooksRecommended = reactHooks.configs.flat["recommended-latest"];
+
+    // Every rule from the react-hooks recommended config except the two classic ones is a React Compiler rule.
+    const reactCompilerRulesDisabled = {
+        rules: Object.fromEntries(
+            Object.keys(reactHooksRecommended.rules)
+                .filter((ruleName) => ruleName !== "react-hooks/rules-of-hooks" && ruleName !== "react-hooks/exhaustive-deps")
+                .map((ruleName) => [ruleName, "off"] as const),
+        ),
+    };
 
     return createBaseConfig({
         ...baseConfigOptions,
 
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         configs: tseslint.config(
             assertDefinedAndGet(react.configs.flat["recommended"], 'react.configs.flat["recommended"] is not defined'),
             assertDefinedAndGet(react.configs.flat["jsx-runtime"], 'react.configs.flat["jsx-runtime"] is not defined'),
-            reactHooks.configs["recommended-latest"],
-            reactRefresh.configs.recommended,
+            reactHooksRecommended,
+            withReactCompiler === true ? {} : reactCompilerRulesDisabled,
+            reactRefreshPlugin.configs.recommended,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
             jsxA11y.flatConfigs.recommended,
 
             {
                 settings: {
                     react: {
-                        version: "detect",
+                        // eslint-plugin-react's "detect" reads the React version via context.getFilename(), which ESLint 10 removed - so it crashes under ESLint 10.
+                        // Pin a concrete version (the version-detection code path is skipped when this is not "detect"); override via settings if a consumer targets a different major.
+                        version: "19.0",
                     },
                 },
                 rules: {

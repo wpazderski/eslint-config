@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 
-import angular from "angular-eslint";
+import { configs as angularConfigs, processInlineTemplates as angularProcessInlineTemplates } from "angular-eslint";
 import { globalIgnores } from "eslint/config";
 import tseslint, { type ConfigArray } from "typescript-eslint";
 import { type CreateBaseConfigOptions, createBaseConfig } from "./base.config.ts";
@@ -14,17 +14,18 @@ export const createAngularConfig = (options?: CreateAngularConfigOptions): Confi
     return createBaseConfig({
         ...baseConfigOptions,
 
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         configs: tseslint.config(
             globalIgnores(["**/.angular/**"]),
 
             {
                 files: jsAndTsLikeFiles,
-                extends: [...angular.configs.tsRecommended],
-                processor: assertDefinedAndGet(angular.processInlineTemplates, "angular.processInlineTemplates is not defined"),
+                extends: [...angularConfigs.tsRecommended],
+                processor: assertDefinedAndGet(angularProcessInlineTemplates, "angular-eslint processInlineTemplates is not defined"),
             },
             {
                 files: ["**/*.html"],
-                extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+                extends: [...angularConfigs.templateRecommended, ...angularConfigs.templateAccessibility],
             },
 
             userConfigs ?? [],

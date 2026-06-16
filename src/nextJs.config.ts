@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 
 import next from "@next/eslint-plugin-next";
 import { globalIgnores } from "eslint/config";
@@ -13,18 +13,19 @@ export const createNextJsConfig = (options?: CreateNextJsConfigOptions): ConfigA
     return createReactConfig({
         ...baseConfigOptions,
 
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         configs: tseslint.config(
             globalIgnores(["**/.next/**"]),
 
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                ...next.flatConfig.coreWebVitals,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, import-x/no-named-as-default-member
+                ...next.configs["core-web-vitals"],
                 files: ["**/*.ts", "**/*.tsx"],
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 rules: {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    ...next.flatConfig.coreWebVitals.rules,
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, import-x/no-named-as-default-member
+                    ...next.configs["core-web-vitals"].rules,
 
                     // plugin: @next
                     "@next/next/google-font-display": "error",
@@ -55,7 +56,7 @@ export const createNextJsConfig = (options?: CreateNextJsConfigOptions): ConfigA
                 files: ["**/*/app/**/@(default|error|global-error|layout|loading|not-found|page|route|template).tsx"],
                 rules: {
                     // plugin: import
-                    "import/no-default-export": "off",
+                    "import-x/no-default-export": "off",
                 },
             },
 
@@ -63,7 +64,7 @@ export const createNextJsConfig = (options?: CreateNextJsConfigOptions): ConfigA
                 files: ["next.config.ts"],
                 rules: {
                     // plugin: import
-                    "import/no-default-export": "off",
+                    "import-x/no-default-export": "off",
                 },
             },
 

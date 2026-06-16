@@ -1,11 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 
 import eslint from "@eslint/js";
 import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
-import importPlugin from "eslint-plugin-import";
+import { flatConfigs as importXFlatConfigs } from "eslint-plugin-import-x";
 import playwright from "eslint-plugin-playwright";
-import turbo from "eslint-plugin-turbo";
+import { configs as turboConfigs } from "eslint-plugin-turbo";
 import globals from "globals";
 import tseslint, { type ConfigArray, type InfiniteDepthConfigWithExtends, configs as tsEslintConfigs } from "typescript-eslint";
 import { commonNamingConventionRules } from "./internal/commonNamingConventionRules.ts";
@@ -86,16 +86,15 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
         withTurbo: createBaseConfigOptions?.withTurbo ?? defaultOptons.withTurbo,
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return tseslint.config(
         globalIgnores(["coverage/", "build/", "dist/", "dist-ssr/", "out/", "out-tsc/", "playwright-report/", "test-results/", "tmp/", ...options.globalIgnores]),
 
         eslint.configs.recommended,
         options.tsEslintConfig,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-        makeOnlyForJsAndTsLikeFiles(importPlugin.flatConfigs.recommended),
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-        makeOnlyForJsAndTsLikeFiles(importPlugin.flatConfigs.typescript),
-        options.withTurbo ? turbo.configs["flat/recommended"] : {},
+        makeOnlyForJsAndTsLikeFiles(importXFlatConfigs.recommended),
+        makeOnlyForJsAndTsLikeFiles(importXFlatConfigs.typescript),
+        options.withTurbo ? ((turboConfigs?.["flat/recommended"] ?? {}) as unknown as InfiniteDepthConfigWithExtends) : {},
 
         {
             files: jsAndTsLikeFiles,
@@ -108,7 +107,7 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
                 reportUnusedDisableDirectives: true,
             },
             settings: {
-                "import/resolver": {
+                "import-x/resolver": {
                     typescript: {},
                 },
             },
@@ -519,16 +518,16 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
                 "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
 
                 // plugin: import
-                "import/first": "error",
-                "import/no-amd": "error",
-                "import/no-anonymous-default-export": "error",
-                "import/no-commonjs": "error",
-                "import/no-cycle": "error",
-                "import/no-default-export": "error",
-                "import/no-deprecated": "error",
-                "import/no-dynamic-require": "error",
-                "import/no-empty-named-blocks": "error",
-                "import/no-extraneous-dependencies": [
+                "import-x/first": "error",
+                "import-x/no-amd": "error",
+                "import-x/no-anonymous-default-export": "error",
+                "import-x/no-commonjs": "error",
+                "import-x/no-cycle": "error",
+                "import-x/no-default-export": "error",
+                "import-x/no-deprecated": "error",
+                "import-x/no-dynamic-require": "error",
+                "import-x/no-empty-named-blocks": "error",
+                "import-x/no-extraneous-dependencies": [
                     "error",
                     {
                         devDependencies: testAndTestUtilsFiles,
@@ -536,14 +535,14 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
                         peerDependencies: false,
                     },
                 ],
-                "import/no-mutable-exports": "error",
-                "import/no-named-as-default": "error",
-                "import/no-named-as-default-member": "error",
-                "import/no-named-default": "error",
-                "import/no-self-import": "error",
-                "import/no-useless-path-segments": "error",
-                "import/no-webpack-loader-syntax": "error",
-                "import/order": [
+                "import-x/no-mutable-exports": "error",
+                "import-x/no-named-as-default": "error",
+                "import-x/no-named-as-default-member": "error",
+                "import-x/no-named-default": "error",
+                "import-x/no-self-import": "error",
+                "import-x/no-useless-path-segments": "error",
+                "import-x/no-webpack-loader-syntax": "error",
+                "import-x/order": [
                     "error",
                     {
                         "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
@@ -683,9 +682,9 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
                 "@typescript-eslint/no-var-requires": "off",
 
                 // plugin: import
-                "import/no-commonjs": "off",
-                "import/no-default-export": "off",
-                "import/no-extraneous-dependencies": "off",
+                "import-x/no-commonjs": "off",
+                "import-x/no-default-export": "off",
+                "import-x/no-extraneous-dependencies": "off",
             },
         },
 
@@ -704,8 +703,8 @@ export const createBaseConfig = (createBaseConfigOptions?: CreateBaseConfigOptio
 
             rules: {
                 // plugin: import
-                "import/no-default-export": "off",
-                "import/no-extraneous-dependencies": "off",
+                "import-x/no-default-export": "off",
+                "import-x/no-extraneous-dependencies": "off",
             },
         },
 

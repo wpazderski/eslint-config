@@ -13,6 +13,7 @@ export const createVueConfig = (options?: CreateVueConfigOptions): ConfigArray =
             ...baseConfigOptions,
             tsEslintConfig: userTsEslintConfig ?? vueTsConfigs.strictTypeChecked,
 
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             configs: tseslint.config(
                 vue.configs["flat/recommended"],
 
@@ -73,8 +74,8 @@ export const createVueConfig = (options?: CreateVueConfigOptions): ConfigArray =
                     files: ["vite.config.ts"],
                     rules: {
                         // plugin: import
-                        "import/no-default-export": "off",
-                        "import/no-extraneous-dependencies": "off",
+                        "import-x/no-default-export": "off",
+                        "import-x/no-extraneous-dependencies": "off",
                     },
                 },
 

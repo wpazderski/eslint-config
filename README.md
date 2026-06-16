@@ -110,6 +110,21 @@ interface CreateBaseConfigOptions {
 }
 ```
 
+`createReactConfig` (and `createNextJsConfig`, which builds on it) accepts one extra React-specific option:
+
+```ts
+interface CreateReactConfigOptions extends CreateBaseConfigOptions {
+    /**
+     * Whether to enable the React Compiler lint rules contributed by `eslint-plugin-react-hooks` v7 (the rules its recommended config adds beyond the two classic ones - e.g. `react-hooks/refs`, `react-hooks/immutability`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/static-components`).
+     * When disabled, only the classic Hooks rules (`react-hooks/rules-of-hooks` and `react-hooks/exhaustive-deps`) stay enabled; every other rule from the recommended config is turned off.
+     * Enable this only for codebases that adopt the React Compiler, since these rules assume the compiler's model and otherwise flag many legitimate patterns.
+     *
+     * @default false
+     */
+    withReactCompiler?: boolean | undefined;
+}
+```
+
 ### Example
 
 ```ts

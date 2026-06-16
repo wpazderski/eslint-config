@@ -25,7 +25,7 @@ export const testAndTestUtilsFiles: string[] = [
 
 export function makeOnlyForJsAndTsLikeFiles(config: InfiniteDepthConfigWithExtends): InfiniteDepthConfigWithExtends {
     if (Array.isArray(config)) {
-        return config.map((c) => makeOnlyForJsAndTsLikeFiles(c)) as InfiniteDepthConfigWithExtends;
+        return config.map((c) => makeOnlyForJsAndTsLikeFiles(c));
     }
     return {
         ...config,

@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 import { type NodePackageToolsConfig, configs, mergeConfigs } from "@wpazderski/node-package-tools";
 
 const config: NodePackageToolsConfig = mergeConfigs(configs.base.latest, {
@@ -20,5 +20,5 @@ const config: NodePackageToolsConfig = mergeConfigs(configs.base.latest, {
     },
 });
 
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default config;
