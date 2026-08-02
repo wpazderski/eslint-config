@@ -69,6 +69,10 @@ No other config is affected: `base`, `nextJs`, `react` and `vue` never load that
 
 This changed in **3.0.0**; in 2.x `angular-eslint` was installed for every consumer.
 
+Upgrading to 3.0.0 needs a **lockfile refresh**, not just a version bump.
+A lockfile that already records `angular-eslint` keeps it: pnpm re-attaches it to the new version as the resolved optional peer, so the Angular CLI subtree stays in the tree and nothing improves.
+Delete the lockfile (or otherwise force a re-resolve) and reinstall.
+
 ## Options
 
 Imported `create*Config` function accepts one optional argument - an object with options:
