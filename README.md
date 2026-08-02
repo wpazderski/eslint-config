@@ -53,6 +53,22 @@ See [Eslint docs](https://eslint.org/docs/latest/flags/#how-to-use-feature-flags
 - `react` - for React projects,
 - `vue` - for Vue projects.
 
+### The `angular` config needs one extra package
+
+`angular-eslint` is an **optional peer dependency** rather than a dependency, so it is installed only by projects that actually use the `angular` config.
+It pulls in the whole Angular CLI, which every other consumer would otherwise carry for nothing - a large dependency surface, and the source of a critical and several high `pnpm audit` advisories in projects that contain no Angular at all.
+
+An Angular project therefore installs it alongside this package:
+
+```sh
+pnpm i -D @wpazderski/eslint-config eslint angular-eslint
+```
+
+Without it, `import ... from "@wpazderski/eslint-config/angular.config.js"` fails with `Cannot find package 'angular-eslint'`.
+No other config is affected: `base`, `nextJs`, `react` and `vue` never load that file.
+
+This changed in **3.0.0**; in 2.x `angular-eslint` was installed for every consumer.
+
 ## Options
 
 Imported `create*Config` function accepts one optional argument - an object with options:
