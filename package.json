@@ -26,6 +26,7 @@
     "scripts": {
         "prepare": "husky",
         "build": "rimraf ./dist/ && rimraf -g ./node_modules/.tmp/*.tsbuildinfo && tsc -b",
+        "prepublishOnly": "run-s build",
         "lint-check": "eslint ./ --flag unstable_native_nodejs_ts_config --max-warnings 0",
         "lint-fix": "eslint ./ --flag unstable_native_nodejs_ts_config --max-warnings 0 --fix",
         "prettier-check": "prettier ./ --check",

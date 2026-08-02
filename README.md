@@ -45,6 +45,11 @@ pnpm exec eslint . --flag unstable_native_nodejs_ts_config
 `unstable_native_nodejs_ts_config` flag is currently required for [native TypeScript support](https://eslint.org/docs/latest/use/configure/configuration-files#native-typescript-support).
 See [Eslint docs](https://eslint.org/docs/latest/flags/#how-to-use-feature-flags) to find out other ways to enable flags (including VS Code).
 
+## Publishing
+
+`dist/` is gitignored and `files` ships only `dist`, so a publish from a stale or missing build would ship the wrong code.
+`prepublishOnly` rebuilds from source, which makes that impossible - run `pnpm publish` and the build happens first.
+
 ## Available configs
 
 - `base` - general config,
