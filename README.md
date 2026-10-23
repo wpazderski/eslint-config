@@ -58,24 +58,29 @@ See [Eslint docs](https://eslint.org/docs/latest/flags/#how-to-use-feature-flags
 - `react` - for React projects,
 - `vue` - for Vue projects.
 
-### The `angular` config needs one extra package
+### The `angular`, `nextJs` and `vue` configs need extra packages
 
-`angular-eslint` is an **optional peer dependency** rather than a dependency, so it is installed only by projects that actually use the `angular` config.
-It pulls in the whole Angular CLI, which every other consumer would otherwise carry for nothing - a large dependency surface, and the source of a critical and several high `pnpm audit` advisories in projects that contain no Angular at all.
+The plugins of these three configs are **optional peer dependencies** rather than dependencies, so a project installs only the plugins of the config it actually uses.
+As dependencies they were installed for every consumer.
+`angular-eslint` pulls in the whole Angular CLI, which carried a critical and several high `pnpm audit` advisories into projects that contain no Angular at all.
+`eslint-plugin-vue` left every consumer with an unmet peer, `vue-eslint-parser`, for a parser that no other config loads.
 
-An Angular project therefore installs it alongside this package:
+A project installs the packages of its config alongside this package:
 
-```sh
-pnpm i -D @wpazderski/eslint-config eslint angular-eslint
-```
+| Config    | Install                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------- |
+| `angular` | `pnpm i -D @wpazderski/eslint-config eslint angular-eslint`                                  |
+| `nextJs`  | `pnpm i -D @wpazderski/eslint-config eslint @next/eslint-plugin-next`                        |
+| `vue`     | `pnpm i -D @wpazderski/eslint-config eslint eslint-plugin-vue @vue/eslint-config-typescript` |
 
-Without it, `import ... from "@wpazderski/eslint-config/angular.config.js"` fails with `Cannot find package 'angular-eslint'`.
-No other config is affected: `base`, `nextJs`, `react` and `vue` never load that file.
+Without them, the import of that config fails with `Cannot find package '<name>'`.
+No other config is affected: `base` and `react` never load these files, and no config loads another config's plugins.
 
-This changed in **3.0.0**; in 2.x `angular-eslint` was installed for every consumer.
+`angular-eslint` became an optional peer in **3.0.0**, and the `nextJs` and `vue` plugins in **4.0.0**.
+In earlier versions each one was installed for every consumer.
 
-Upgrading to 3.0.0 needs a **lockfile refresh**, not just a version bump.
-A lockfile that already records `angular-eslint` keeps it: pnpm re-attaches it to the new version as the resolved optional peer, so the Angular CLI subtree stays in the tree and nothing improves.
+An upgrade across either version needs a **lockfile refresh**, not just a version bump.
+A lockfile that already records such a package keeps it: pnpm re-attaches it to the new version as the resolved optional peer, so the package stays in the tree and nothing improves.
 Delete the lockfile (or otherwise force a re-resolve) and reinstall.
 
 ## Options

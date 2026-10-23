@@ -40,8 +40,6 @@
     "dependencies": {
         "@eslint/eslintrc": "^3.3.5",
         "@eslint/js": "^10.0.1",
-        "@next/eslint-plugin-next": "^16.2.9",
-        "@vue/eslint-config-typescript": "^14.8.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-import-resolver-typescript": "^4.4.5",
         "eslint-plugin-import-x": "^4.16.2",
@@ -51,17 +49,19 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-react-refresh": "^0.5.3",
         "eslint-plugin-turbo": "^2.9.18",
-        "eslint-plugin-vue": "^10.9.2",
         "globals": "^17.6.0",
         "typescript-eslint": "^8.61.1"
     },
     "devDependencies": {
+        "@next/eslint-plugin-next": "^16.2.9",
         "@types/node": "^25.9.3",
+        "@vue/eslint-config-typescript": "^14.8.0",
         "@wpazderski/node-package-tools": "^2.0.0",
         "@wpazderski/prettier-config": "^2.0.1",
         "@wpazderski/typescript-config": "^2.0.1",
         "angular-eslint": "^22.0.0",
         "eslint": "^10.5.0",
+        "eslint-plugin-vue": "^10.9.2",
         "husky": "^9.1.7",
         "npm-run-all": "^4.1.5",
         "prettier": "^3.8.4",
@@ -69,8 +69,11 @@
         "typescript": "^6.0.3"
     },
     "peerDependencies": {
+        "@next/eslint-plugin-next": "^16.2.9",
+        "@vue/eslint-config-typescript": "^14.8.0",
         "angular-eslint": "^22.0.0",
-        "eslint": "^9.27.0 || ^10.0.0"
+        "eslint": "^9.27.0 || ^10.0.0",
+        "eslint-plugin-vue": "^10.9.2"
     },
     "packageManager": "pnpm@10.11.0",
     "engines": {
@@ -80,7 +83,16 @@
         "yarn": "please-use-pnpm"
     },
     "peerDependenciesMeta": {
+        "@next/eslint-plugin-next": {
+            "optional": true
+        },
+        "@vue/eslint-config-typescript": {
+            "optional": true
+        },
         "angular-eslint": {
+            "optional": true
+        },
+        "eslint-plugin-vue": {
             "optional": true
         }
     }

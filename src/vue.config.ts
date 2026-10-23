@@ -1,3 +1,5 @@
+/* eslint-disable import-x/no-extraneous-dependencies */
+
 import { defineConfigWithVueTs, vueTsConfigs } from "@vue/eslint-config-typescript";
 import vue from "eslint-plugin-vue";
 import tseslint, { type ConfigArray } from "typescript-eslint";
